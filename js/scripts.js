@@ -5,7 +5,7 @@ var rollDice = function(rolling) {
 
 // user interface logic
 $(document).ready(function() {
-  $("#player1").submit(function(event) {
+  $("#roll1").submit(function(event) {
     event.preventDefault();
     var roll1 = rollDice();
     console.log(roll1);
