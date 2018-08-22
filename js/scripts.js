@@ -1,11 +1,13 @@
 // business logic
 var diceRolls = []; //array for roll vals
 var rollSum = 0; //starts roll count at 0
+var reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-// creates randome roll 1-6
+// creates random roll 1-6
 var rollDice = function(rolling) {
   return Math.floor((Math.random() * 6) + 1);
 }
+
 
 // var addRolls = function() {
 //   rollDice + rollDice
@@ -22,8 +24,8 @@ $(document).ready(function() {
     var roll1 = rollDice();  //calls rollDice function
     $("#rolledDice1").text(roll1); //shows current roll val
     diceRolls.push(roll1); // adds row value to array
-    console.log(roll1);
-    $("#playbutton").addClass("hidden");
+    $("#playbutton").addClass("hidden"); //hides play button after first click
+    // console.log(diceRolls);
   });
 
   $("#roll1").submit(function(event) {
@@ -31,7 +33,10 @@ $(document).ready(function() {
     var roll1 = rollDice();  //calls rollDice function
     $("#rolledDice1").text(roll1); //shows current roll val
     diceRolls.push(roll1); // adds row value to array
-    console.log(roll1);
+    // console.log(diceRolls);
+    var rollTotal = diceRolls.reduce(reducer);
+    console.log(rollTotal);
+    $("#tempTotal1").text(rollTotal);
   });
 
 });
