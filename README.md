@@ -52,10 +52,14 @@ Example Output: sees "4"
 If they click roll again the new roll is added to the previous roll value.
 Example Input: click "roll" - "4", click "roll" - "2"
 Example Output: "6"
------
+
 After clicking roll they now have the choice for a second button that allows them to hold. If clicked the number goes to a permanent score.
 Example Input: click "hold"
 Example Output: "4"
+-----
+After clicking hold, the roll number and temporary score slots are reset to 0
+Example Input: "roll" = "2", click "roll" = "3", click "hold"
+Example Output: "0" at roll / "0" at temporary score
 
 If a 1 is rolled all temporary score is erased.
 Example Input: "1"

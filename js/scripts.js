@@ -1,27 +1,21 @@
 // business logic
 var diceRolls = []; //array for roll vals
 var rollSum = 0; //starts roll count at 0
-var addition = (accumulator, currentValue) => accumulator + currentValue;
-var permTotal = 0;
-var holdTotal = [];
-var rollTotal;
+var addition = (accumulator, currentValue) => accumulator + currentValue; //equation to add all integers in an array
+var permTotal = 0; //starts roll count at 0
+var holdTotal = []; //array for hold button to add to
+var rollTotal; //creates an empty variable globally for use locally
+var roll1;
 
 // creates random roll 1-6
 var rollDice = function(rolling) {
   return Math.floor((Math.random() * 6) + 1);
 }
 
+// takes the current turns roll total and adds it to the perm total when the hold button is used.
 var totalAccumulation = function(math) {
   return rollTotal + permTotal;
 }
-
-// var addRolls = function() {
-//   rollDice + rollDice
-    // return rollSum += diceRolls[i];
-    // rollSum += item;
-    // tempTotal1.innerHTML = rollSum;
-//   }
-// }
 
 // user interface logic
 $(document).ready(function() {
@@ -38,17 +32,17 @@ $(document).ready(function() {
     var roll1 = rollDice();  //calls rollDice function
     $("#rolledDice1").text(roll1); //shows current roll val
     diceRolls.push(roll1); // adds roll value to array
-    console.log(diceRolls);
-    rollTotal = diceRolls.reduce(addition);
-    $("#tempTotal1").text(rollTotal);
+    rollTotal = diceRolls.reduce(addition); //adds all rolls in the array
+    $("#tempTotal1").text(rollTotal); //shows the rolls total
   });
-
 
   $("#hold1").submit(function(event) {
     event.preventDefault();
     var hold1 = totalAccumulation();  //calls rollDice function
     holdTotal.push(hold1); // adds roll value total to array
-    var permTotal = holdTotal.reduce(addition);
-    $("#permTotal1").text(permTotal);
+    var permTotal = holdTotal.reduce(addition); //adds all totals from the holds in the array
+    $("#permTotal1").text(permTotal); //shows the total score
+    $("#tempTotal1").empty();
+    $("#rolledDice1").empty();
   });
 });
