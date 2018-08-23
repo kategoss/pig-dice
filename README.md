@@ -60,19 +60,19 @@ Example Output: "4"
 After clicking hold, the roll number and temporary score slots are reset to 0
 Example Input: "roll" = "2", click "roll" = "3", click "hold"
 Example Output: "0" at roll / "0" at temporary score
------
+
 If a 1 is rolled all temporary score is erased.
 Example Input: "1"
 Example Output: "0"
-
-If a 1 is rolled and the turn moves to the next player.
-Example Input: "1"
-Example Output: "End of Turn"
 
 Above specs are repeated with Player 2
 Example Input: Rolls Dice chooses to hold or roll again
 Example Output: "3"
 
+If a 1 is rolled the turn moves to the next player.
+Example Input: "1"
+Example Output: "End of Turn"
+-----
 First player to 100 point permanent cap is winner
 Example Input: Rolls Dice & holds
 Example Output: "100pts - You win!"

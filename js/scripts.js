@@ -1,6 +1,5 @@
 // business logic
 
-
 //creates our constructor
 function Player(name) {
   this.name = name;
@@ -10,44 +9,29 @@ function Player(name) {
   // console.log(player1);
 }
 
+// creates random roll 1-6 WORKS
+var rollDice = function() {
+  return Math.floor((Math.random() * 6) + 1);
+}
 
-//-------------------------------------
+function endofTurn() {
+  $(".playerArea").toggle();
+}
 
-// var notYourTurn = function() {
-//   if ("#btnHold1") {
-//     .player1.hide();
-//   }
-//   )
-// }
-
-Player.prototype.playerRoll = function(roll) { //call function - working
-  console.log(this.roll);
+Player.prototype.playerRoll = function(roll) { //call function - WORKS
   if(this.roll === 1) {
     this.tempScore = 0;
+    endofTurn();
   } else {
     this.tempScore += this.roll;
     return;
-
   }
 }
-  //   // switch to other player
 
-
-
-
-  // }
-
-
-Player.prototype.hold = function() {
+Player.prototype.hold = function() { //WORKS
   return this.permScore += this.tempScore;
   // switch to other player
 };
-
-// creates random roll 1-6
-var rollDice = function() {
-  return Math.floor((Math.random() * 6) + 1);
-
-}
 
 // user interface logic
 $(document).ready(function() {
@@ -62,11 +46,27 @@ $(document).ready(function() {
     $("#tempTotal1").text(player1.tempScore);
   });
 
-  // $("#hold1").submit(function(event) {
-  //   event.preventDefault();
-  //   var score = player1.hold();
-  //   // console.log("score=" + score);
-  //   $("#permTotal1").text(this.permScore);
-  //   this.tempScore = 0; //shows the total score
-  // });
+  $("#hold1").submit(function(event) {
+    event.preventDefault();
+    player1.hold();
+    $("#permTotal1").text(player1.permScore);
+    player1.tempScore = 0; //shows the total score
+    endofTurn();
+  });
+
+  $("#roll2").submit(function(event) {
+    event.preventDefault();
+    player2.roll = rollDice(); //calls rollDice function
+    $("#rolledDice2").text(player2.roll); //shows current roll val - working
+    player2.playerRoll();
+    $("#tempTotal2").text(player2.tempScore);
+  });
+
+  $("#hold2").submit(function(event) {
+    event.preventDefault();
+    player2.hold();
+    $("#permTotal2").text(player2.permScore);
+    player2.tempScore = 0; //shows the total score
+    endofTurn();
+  });
 });

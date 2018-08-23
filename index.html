@@ -14,75 +14,61 @@
 
 
   <div class="container">
+    <div class="row">
 
-
-    <div class="row player1">
       <div class="col-md-6">
         <h2>Player 1</h2>
+        <div class="playerArea" id="player1area">
+          <form id="roll1">
+            <button id="btnRoll1" type="submit" value="roll1">Roll</button>
+          </form>
+          <form id="hold1">
+            <button id="btnHold1" type="submit" value="hold1">Hold</button>
+          </form>
 
-        <form id="roll1">
-          <button id="btnRoll1" type="submit" value="roll1">Roll</button>
-        </form>
-
-        <form id="hold1">
-          <button id="btnHold1" type="submit" value="hold1">Hold</button>
-        </form>
-      </div>
-
-
-      <!-- <div class="col-md-6">
-        <form id="player2">
-          <h2>Player 2</h2>
-          <button type="submit">Roll</button>
-          <button type="submit">Hold</button>
-        </form>
-      </div>
-    </div> -->
-
-    <div class="row">
-      <div class="col-md-6">
-
-        <div class="col-md-6">
-          <div class="row" id="temp1">
-
-            <div class="col-md-6">
-              <h2 id="rolledDice1">_____</h2>
-            </div>
-
-            <div class="col-md-6">
-              <h2 id="tempTotal1">_____</h2>
-            </div>
+          <div class="col-md-2">
+            <h2 id="rolledDice1">_____</h2>
           </div>
-
-          <div class="row">
-            <div id="totalScore1">
-              <h2 id="permTotal1">_____</h2>
-            </div>
+          <div class="col-md-2">
+            <h2 id="tempTotal1">_____</h2>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div id="totalScore1">
+            <h2 id="permTotal1">_____</h2>
           </div>
         </div>
       </div>
 
-<!--
       <div class="col-md-6">
-        <div class="col-md-6">
-          <div class="row" id="temp2">
-            <div class="col-md-6">
-              <h2 id="rolledDice2">_____</h2>
-            </div>
-            <div class="col-md-6">
-              <h2 id="tempTotal2">_____</h2>
-            </div>
+        <h2>Player 2</h2>
+        <div class="playerArea" id="player2area">
+          <form id="roll2">
+            <button id="btnRoll2" type="submit" value="roll2">Roll</button>
+          </form>
+          <form id="hold2">
+            <button id="btnHold2" type="submit" value="hold2">Hold</button>
+          </form>
+          <div class="col-md-2">
+            <h2 id="rolledDice2">_____</h2>
           </div>
-          <div class="row">
-            <div id="totalScore2">
-              <h2 id="permTotal2">_____</h2>
-            </div>
+          <div class="col-md-2">
+            <h2 id="tempTotal2">_____</h2>
           </div>
         </div>
-      </div> -->
 
-      <div class="win">You Win!</div>
+        <div class="col-md-2">
+          <div id="totalScore2">
+            <h2 id="permTotal2">_____</h2>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</body>
+
+
+
+        <div class="win">You Win!</div>
+      </div>
+    </div>
+  </body>
 </html>
