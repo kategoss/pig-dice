@@ -1,10 +1,19 @@
 // business logic
 
-// function Scores(rollScore, tempScore, permScore) {
-//   this.rollScore = parseInt(rollScore);
-//   this.tempScore = parseInt(tempScore);
-//   this.permScore = parseInt(permScore);
-// }
+//creates our constructor
+function Player(name, roll, temp, perm) {
+  this.name = name;
+  this.roll = 0;
+  this.tempScore = 0;
+  this.permScore = 0;
+}
+
+// creates random roll 1-6
+var rollDice = function() {
+  return Math.floor((Math.random() * 6) + 1);
+};
+
+//-------------------------------------
 
 
 var diceRolls = []; //array for roll vals
@@ -14,29 +23,10 @@ var permTotal = 0; //starts roll count at 0
 var holdTotal = []; //array for hold button to add to
 var rollTotal; //creates an empty variable globally for use locally
 var roll1;
+var clear;
 
-// creates random roll 1-6
-var rollDice = function() {
-  var roll = Math.floor((Math.random() * 6) + 1);
-//   return roll;
-// }
-  if (roll === 1) {
-    clear();
-    return 1;
-    // move to next player
-  } else {
-    return roll;
-  }
-};
 
-var clear = function() {
-  // rollForm.reset();
-  // document.getElementById("rollForm").reset();
 
-  // console.log('clear called');
-  // var tempTotal = "nill";
-  // var rollTotal = "nill";
-};
 
 // takes the current turns roll total and adds it to the perm total when the hold button is used.
 var totalAccumulation = function(math) {
@@ -47,6 +37,8 @@ var totalAccumulation = function(math) {
 
 // user interface logic
 $(document).ready(function() {
+
+
   $("#play1").submit(function(event) {
     event.preventDefault();
     var roll1 = rollDice();  //calls rollDice function
@@ -74,12 +66,6 @@ $(document).ready(function() {
     $("#rolledDice1").empty();
   });
 
-    var winTerms = function(win) {
-      if (permTotal >= 100) { //add in Player2 later
-        // $("#win").show();
-        $("#win").show();
-    }
-  };
+
+
 });
-  // $("#win").show();
-  // var winStatus = function($("#win").show());
