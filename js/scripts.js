@@ -14,8 +14,13 @@ var rollDice = function() {
   return Math.floor((Math.random() * 6) + 1);
 }
 
+//hides the play area of the player whos turn it isn't
 function endofTurn() {
-  $(".playerArea").toggle();
+  $(".playerArea").toggle(2000);
+    if(this.tempScore === 0) {
+      // this.roll = 0;
+      // return;
+    }
 }
 
 Player.prototype.playerRoll = function(roll) { //call function - WORKS
@@ -52,6 +57,7 @@ $(document).ready(function() {
     $("#permTotal1").text(player1.permScore);
     player1.tempScore = 0; //shows the total score
     endofTurn();
+    wintheGame();
   });
 
   $("#roll2").submit(function(event) {
@@ -68,5 +74,12 @@ $(document).ready(function() {
     $("#permTotal2").text(player2.permScore);
     player2.tempScore = 0; //shows the total score
     endofTurn();
+    wintheGame();
   });
+
+  function wintheGame() {
+    if (player1.permScore >= 100 || player2.permScore >= 100) {
+    $("#win").show();
+    }
+  }
 });
