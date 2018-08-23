@@ -6,7 +6,6 @@ function Player(name) {
   this.roll = 0;
   this.tempScore = 0;
   this.permScore = 0;
-  // console.log(player1);
 }
 
 // creates random roll 1-6 WORKS
@@ -16,17 +15,14 @@ var rollDice = function() {
 
 //hides the play area of the player whos turn it isn't
 function endofTurn() {
-  $(".playerArea").toggle(2000);
-    if(this.tempScore === 0) {
-      // this.roll = 0;
-      // return;
-    }
+  $(".playerArea").toggle(750);
 }
 
 Player.prototype.playerRoll = function(roll) { //call function - WORKS
   if(this.roll === 1) {
     this.tempScore = 0;
     endofTurn();
+    this.roll = 0;
   } else {
     this.tempScore += this.roll;
     return;
@@ -34,9 +30,11 @@ Player.prototype.playerRoll = function(roll) { //call function - WORKS
 }
 
 Player.prototype.hold = function() { //WORKS
-  return this.permScore += this.tempScore;
-  // switch to other player
+  this.permScore += this.tempScore;
+  this.tempScore = 0;
+  return;
 };
+
 
 // user interface logic
 $(document).ready(function() {
@@ -54,6 +52,8 @@ $(document).ready(function() {
   $("#hold1").submit(function(event) {
     event.preventDefault();
     player1.hold();
+    $("#rolledDice1").text("0");
+    $("#tempTotal1").text("0");
     $("#permTotal1").text(player1.permScore);
     player1.tempScore = 0; //shows the total score
     endofTurn();
@@ -71,6 +71,8 @@ $(document).ready(function() {
   $("#hold2").submit(function(event) {
     event.preventDefault();
     player2.hold();
+    $("#rolledDice2").text("0");
+    $("#tempTotal2").text("0");
     $("#permTotal2").text(player2.permScore);
     player2.tempScore = 0; //shows the total score
     endofTurn();
@@ -78,7 +80,7 @@ $(document).ready(function() {
   });
 
   function wintheGame() {
-    if (player1.permScore >= 100 || player2.permScore >= 100) {
+    if (player1.permScore >= 20 || player2.permScore >= 20) {
     $("#win").show();
     }
   }
